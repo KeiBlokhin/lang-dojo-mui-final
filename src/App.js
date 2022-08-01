@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Layout from './components/Layout'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import HomeScreen from './Screens/HomeScreen'
+import CourseDetailsScreen from './Screens/CourseDetailsScreen'
+import FeaturedCoursesScreen from './Screens/FeaturedCoursesScreen'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route index element={<HomeScreen />} />
+          <Route path={'/course-details'} element={<CourseDetailsScreen />} />
+          <Route
+            path={'/currently-featured'}
+            element={<FeaturedCoursesScreen />}
+          />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
